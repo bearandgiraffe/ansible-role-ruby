@@ -1,2 +1,11 @@
 ---
-# tasks file for ruby
+- file: path=/opt/build state=directory
+
+- include: 10-chruby.yml
+  tags:    ansible-chruby
+- include: 20-ruby-install.yml
+  tags:    ansible-chruby
+- include: 30-ruby.yml
+  tags:    ansible-chruby
+- include: 40-remove-outdated-rubies.yml
+  tags:    ansible-chruby

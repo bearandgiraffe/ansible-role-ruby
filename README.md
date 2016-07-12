@@ -1,38 +1,49 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+A role to install ruby using chruby.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+None.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Available variables are listed below, along with default values:
+
+  ruby_ruby_version:            ruby-2.3.1
+  ruby_ruby_outdated_versions:  []
+
+  ruby_chruby_version:          0.3.9
+  ruby_chruby_version:          7220a96e355b8a613929881c091ca85ec809153988d7d691299e0a16806b42fd
+  ruby_chruby_exec_command:     chruby-exec
+
+  ruby_ruby_install_version:    0.6.0
+  ruby_ruby_install_checksum:   3cc90846ca972d88b601789af2ad9ed0a496447a13cb986a3d74a4de062af37d
+  ruby_ruby_install_command:    ruby-install
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None.
 
 Example Playbook
 ----------------
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-    - hosts: servers
+    - hosts: web
       roles:
-         - { role: username.rolename, x: 42 }
+         - { role: ychaker.ruby, ruby_ruby_version: ruby-2.3.1 }
 
 License
 -------
 
-BSD
+The Unlicense (see LICENSE)
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Youssef Chaker (@ychaker) from Bear & Giraffe LLC (@bearandgiraffe).
