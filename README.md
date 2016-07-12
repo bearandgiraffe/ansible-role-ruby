@@ -13,16 +13,18 @@ Role Variables
 
 Available variables are listed below, along with default values:
 
-  ruby_ruby_version:            ruby-2.3.1
-  ruby_ruby_outdated_versions:  []
+```
+ruby_ruby_version:            ruby-2.3.1
+ruby_ruby_outdated_versions:  []
 
-  ruby_chruby_version:          0.3.9
-  ruby_chruby_version:          7220a96e355b8a613929881c091ca85ec809153988d7d691299e0a16806b42fd
-  ruby_chruby_exec_command:     chruby-exec
+ruby_chruby_version:          0.3.9
+ruby_chruby_version:          7220a96e355b8a613929881c091ca85ec809153988d7d691299e0a16806b42fd
+ruby_chruby_exec_command:     chruby-exec
 
-  ruby_ruby_install_version:    0.6.0
-  ruby_ruby_install_checksum:   3cc90846ca972d88b601789af2ad9ed0a496447a13cb986a3d74a4de062af37d
-  ruby_ruby_install_command:    ruby-install
+ruby_ruby_install_version:    0.6.0
+ruby_ruby_install_checksum:   3cc90846ca972d88b601789af2ad9ed0a496447a13cb986a3d74a4de062af37d
+ruby_ruby_install_command:    ruby-install
+```
 
 Dependencies
 ------------
@@ -34,9 +36,11 @@ Example Playbook
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-    - hosts: web
-      roles:
-         - { role: ychaker.ruby, ruby_ruby_version: ruby-2.3.1 }
+```
+- hosts: web
+  roles:
+     - { role: ychaker.ruby, ruby_ruby_version: ruby-2.3.1 }
+```
 
 License
 -------
