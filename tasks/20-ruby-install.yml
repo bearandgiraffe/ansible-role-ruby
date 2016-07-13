@@ -3,16 +3,16 @@
 
 - name: Download ruby-install with specified version
   get_url: >
-    url=https://github.com/postmodern/ruby-install/archive/v{{ruby_ruby_install_version}}.tar.gz
-    dest=/opt/build/ruby-install-{{ruby_ruby_install_version}}.tar.gz
-    sha256sum={{ruby_ruby_install_checksum}}
+    url=https://github.com/postmodern/ruby-install/archive/v{{ ruby_ruby_install_version }}.tar.gz
+    dest=/opt/build/ruby-install-{{ ruby_ruby_install_version }}.tar.gz
+    sha256sum={{ ruby_ruby_install_checksum }}
 
 - name: Unarchive ruby-install
-  unarchive: src=/opt/build/ruby-install-{{ruby_ruby_install_version}}.tar.gz
+  unarchive: src=/opt/build/ruby-install-{{ ruby_ruby_install_version }}.tar.gz
              dest=/opt/build/
              copy=no
   register: ruby_install_unarchive
 
 - name: make install ruby-install
-  shell: make -j {{1 + (ansible_processor_vcpus|int)}} install chdir=/opt/build/ruby-install-{{ruby_ruby_install_version}}
+  shell: make -j {{ 1 + (ansible_processor_vcpus|int) }} install chdir=/opt/build/ruby-install-{{ ruby_ruby_install_version }}
   when: ruby_install_unarchive.changed

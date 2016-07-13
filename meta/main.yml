@@ -1,19 +1,23 @@
 ---
-dependencies: []
-
 galaxy_info:
   author: Youssef Chaker
   description: Installs Ruby using chruby.
   company: "Bear & Giraffe LLC"
+
   license: "The Unlicense"
+
   min_ansible_version: 1.2
+
   platforms:
   - name: Ubuntu
     versions:
     - trusty
     - xenial
+
   galaxy_tags:
   - development
   - web
   - ruby
   - churby
+
+dependencies: []

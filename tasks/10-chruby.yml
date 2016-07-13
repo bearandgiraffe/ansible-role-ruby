@@ -6,24 +6,24 @@
   register: opt_build_created
 
 - name: Download chruby with specified version
-  get_url: url=https://github.com/postmodern/chruby/archive/v{{ruby_chruby_version}}.tar.gz
-           dest=/opt/build/chruby-{{ruby_chruby_version}}.tar.gz
-           sha256sum={{ruby_chruby_checksum}}
+  get_url: url=https://github.com/postmodern/chruby/archive/v{{ ruby_chruby_version }}.tar.gz
+           dest=/opt/build/chruby-{{ ruby_chruby_version }}.tar.gz
+           sha256sum={{ ruby_chruby_checksum }}
   when: opt_build_created.stat.exists
 
 - name: Unarchive chruby
-  unarchive: src=/opt/build/chruby-{{ruby_chruby_version}}.tar.gz
+  unarchive: src=/opt/build/chruby-{{ ruby_chruby_version }}.tar.gz
              dest=/opt/build/
              copy=no
   register: chruby_unarchive
 
 - name: make install chruby
-  shell: make install chdir=/opt/build/chruby-{{ruby_chruby_version}}
+  shell: make install chdir=/opt/build/chruby-{{ ruby_chruby_version }}
   when: chruby_unarchive.changed
 
 - name: Copy chruby.sh template
   template: src=chruby.sh.j2 dest=/etc/profile.d/chruby.sh mode=u+x
 
 - name: Check to make sure chruby executable exists
-  stat: path="{{ruby_chruby_exec_command}}"
+  stat: path="{{ ruby_chruby_exec_command }}"
   register: chruby_file

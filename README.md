@@ -34,9 +34,7 @@ None.
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-```
+```yml
 - hosts: web
   roles:
      - { role: bearandgiraffe.ruby, ruby_ruby_version: ruby-2.3.1 }
