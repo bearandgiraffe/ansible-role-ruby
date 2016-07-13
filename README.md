@@ -1,4 +1,4 @@
-Role Name
+Ruby
 =========
 
 A role to install ruby using chruby.
