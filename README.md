@@ -13,9 +13,9 @@ Role Variables
 
 Available variables are listed below, along with default values:
 
-```
+```yml
 ruby_ruby_version:            ruby-2.3.1
-ruby_ruby_outdated_versions:  []
+ruby_outdated_ruby_versions:  []
 
 ruby_chruby_version:          0.3.9
 ruby_chruby_version:          7220a96e355b8a613929881c091ca85ec809153988d7d691299e0a16806b42fd
@@ -39,7 +39,7 @@ Including an example of how to use your role (for instance, with variables passe
 ```
 - hosts: web
   roles:
-     - { role: ychaker.ruby, ruby_ruby_version: ruby-2.3.1 }
+     - { role: bearandgiraffe.ruby, ruby_ruby_version: ruby-2.3.1 }
 ```
 
 License

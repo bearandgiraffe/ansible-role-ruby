@@ -1,22 +1,29 @@
-- file: path=/opt/build state=directory mode=0755 owner=root group=root
+- name: Prepare directory for installing chruby
+  file: path=/opt/build state=directory mode=0755 owner=root group=root
 
-- stat: path="/opt/build"
+- name: Check if build directory exists
+  stat: path="/opt/build"
   register: opt_build_created
 
-- get_url: url=https://github.com/postmodern/chruby/archive/v{{ruby_chruby_version}}.tar.gz
+- name: Download chruby with specified version
+  get_url: url=https://github.com/postmodern/chruby/archive/v{{ruby_chruby_version}}.tar.gz
            dest=/opt/build/chruby-{{ruby_chruby_version}}.tar.gz
            sha256sum={{ruby_chruby_checksum}}
   when: opt_build_created.stat.exists
 
-- unarchive: src=/opt/build/chruby-{{ruby_chruby_version}}.tar.gz
+- name: Unarchive chruby
+  unarchive: src=/opt/build/chruby-{{ruby_chruby_version}}.tar.gz
              dest=/opt/build/
              copy=no
   register: chruby_unarchive
 
-- shell: make install chdir=/opt/build/chruby-{{ruby_chruby_version}}
+- name: make install chruby
+  shell: make install chdir=/opt/build/chruby-{{ruby_chruby_version}}
   when: chruby_unarchive.changed
 
-- template: src=chruby.sh.j2 dest=/etc/profile.d/chruby.sh mode=u+x
+- name: Copy chruby.sh template
+  template: src=chruby.sh.j2 dest=/etc/profile.d/chruby.sh mode=u+x
 
-- stat: path="{{ruby_chruby_exec_command}}"
+- name: Check to make sure chruby executable exists
+  stat: path="{{ruby_chruby_exec_command}}"
   register: chruby_file
